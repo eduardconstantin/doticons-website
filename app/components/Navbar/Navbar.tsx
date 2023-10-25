@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import packageJson from '../../../package.json';
-import { GitButton } from '../GitButton';
+import GitButton from '../GitButton';
 import styles from './Navbar.module.scss';
 
-export default function Navbar() {
+const Navbar = () => {
   let version = packageJson.dependencies.doticons.includes('^')
     ? packageJson.dependencies.doticons.replace('^', '')
     : packageJson.dependencies.doticons;
@@ -29,4 +29,6 @@ export default function Navbar() {
       </div>
     </nav>
   );
-}
+};
+
+export default Navbar;

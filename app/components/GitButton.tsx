@@ -2,7 +2,7 @@
 
 import GitHubButton from 'react-github-btn';
 
-export const GitButton = () => {
+const GitButton = () => {
   return (
     <GitHubButton
       href="https://github.com/eduardconstantin/doticons"
@@ -16,3 +16,4 @@ export const GitButton = () => {
     </GitHubButton>
   );
 };
+export default GitButton;
