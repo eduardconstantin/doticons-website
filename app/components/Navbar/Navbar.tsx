@@ -1,9 +1,7 @@
-'use client';
-
 import Image from 'next/image';
 import Link from 'next/link';
-import GitHubButton from 'react-github-btn';
 import packageJson from '../../../package.json';
+import { GitButton } from '../GitButton';
 import styles from './Navbar.module.scss';
 
 export default function Navbar() {
@@ -27,16 +25,7 @@ export default function Navbar() {
             <p className={styles.version}>{'v' + version}</p>
           </Link>
         </div>
-        <GitHubButton
-          href="https://github.com/eduardconstantin/doticons"
-          data-color-scheme="no-preference: light; light: light; dark: dark;"
-          data-icon="octicon-star"
-          data-size="large"
-          data-show-count="true"
-          aria-label="Star doticons collection on GitHub"
-        >
-          Star
-        </GitHubButton>
+        <GitButton />
       </div>
     </nav>
   );
