@@ -1,7 +1,6 @@
 'use client';
 
-import React from 'react';
-import styles from './DotsBackground.module.css';
+import styles from './DotsBackground.module.scss';
 
 const DotsBackground = () => {
   const numCols =
