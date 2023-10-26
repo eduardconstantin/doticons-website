@@ -1,82 +1,119 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import styles from './DotsBackground.module.scss';
 
 const DotsBackground = () => {
-  const numCols =
-    window.innerWidth <= 400
-      ? 10
-      : window.innerWidth <= 500
-      ? 13
-      : window.innerWidth <= 550
-      ? 14
-      : window.innerWidth <= 600
-      ? 15
-      : window.innerWidth <= 650
-      ? 16
-      : window.innerWidth <= 700
-      ? 17
-      : window.innerWidth <= 750
-      ? 18
-      : window.innerWidth <= 800
-      ? 20
-      : window.innerWidth <= 850
-      ? 21
-      : window.innerWidth <= 900
-      ? 22
-      : window.innerWidth <= 950
-      ? 23
-      : window.innerWidth <= 1000
-      ? 24
-      : 35;
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+  const [currentDots, setCurrentDots] = useState([]);
 
-  const rowSpacing = window.innerWidth > 1000 ? 3 : 2;
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+      setWindowHeight(window.innerHeight);
+    };
 
-  const numRows = 50;
-  const colSpacing = 0;
+    window.addEventListener('resize', handleResize);
 
-  const circleElements = [];
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
-  for (let i = 0; i < numCols; i++) {
-    for (let j = 0; j < numRows; j++) {
-      const cx = i * (100 / numCols) + colSpacing * i + 50 / numCols;
-      const cy = j * (100 / numRows) + rowSpacing * j + 50 / numRows;
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (currentDots.length < 15) {
+        const newDot = [
+          Math.floor(Math.random() * numberOfDotsY),
+          Math.floor(Math.random() * numberOfDotsX),
+        ];
+        setCurrentDots((prevDots) => [...prevDots, newDot]);
+        setTimeout(() => {
+          setCurrentDots((prevDots) =>
+            prevDots.map((dot) =>
+              dot === newDot
+                ? [
+                    Math.floor(Math.random() * numberOfDotsY),
+                    Math.floor(Math.random() * numberOfDotsX),
+                  ]
+                : dot
+            )
+          );
+        }, 5000);
+      }
+    }, 2000);
 
-      const animationDelay = Math.random() * 1 + 's';
-      const animationDuration = Math.random() * 5 + 5 + 's';
+    return () => clearInterval(interval);
+  }, []);
 
-      circleElements.push(
-        <circle
-          key={`${i}-${j}`}
-          className={styles.dot}
-          style={{
-            cx: `${cx}%`,
-            cy: `${cy}%`,
-            r: '11',
-            animation: `dotAnimation ${animationDuration} linear ${animationDelay} infinite`,
-          }}
-        />
-      );
-    }
-  }
+  const dotRadius = 13;
+  const padding = 10;
+  const dotSpacing = dotRadius * 2 + 11;
+  const numberOfDotsX = Math.ceil(
+    (windowWidth - dotRadius - padding * 2) / dotSpacing
+  );
+  const numberOfDotsY = Math.ceil(
+    (windowHeight - dotRadius - padding * 2) / dotSpacing
+  );
 
   return (
     <div className={styles.background}>
-      <svg className={styles.svg} xmlns="http://www.w3.org/2000/svg">
-        <style>
-          {`
-            @keyframes dotAnimation {
-              0% {
-                opacity: 0.4;
-              }
-              100% {
-                opacity: 1;
-              }
-            }
-          `}
-        </style>
-        {circleElements}
+      <svg
+        className={styles.svg}
+        viewBox={`0 0 ${windowWidth - padding * 2} ${
+          windowHeight - padding * 2
+        }`}
+      >
+        {Array.from({ length: numberOfDotsY }, (_, i) =>
+          Array.from({ length: numberOfDotsX }, (_, j) => (
+            <circle
+              key={`${i}-${j}`}
+              cx={`${j * dotSpacing + dotRadius + padding}px`}
+              cy={`${i * dotSpacing + dotRadius + padding}px`}
+              r={dotRadius}
+              fill="white"
+              fill-opacity={0.1}
+            >
+              {currentDots.some((dot) => dot[0] === i && dot[1] === j) && (
+                <animate
+                  attributeName="fill-opacity"
+                  values="0.1;1;1;0.1"
+                  dur={`${Math.random() * 5 + 5}s`}
+                  repeatCount="indefinite"
+                />
+              )}
+            </circle>
+          ))
+        )}
       </svg>
+      {/*<svg className={styles.svg} xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern
+            id="dotPattern"
+            patternUnits="userSpaceOnUse"
+            width="37"
+            height="37"
+          >
+            <circle cx="18.5" cy="18.5" r="13" fill="lightblue" opacity="0.1">
+              <animate
+                attributeName="fill-opacity"
+                values="1;0;1"
+                dur="2s"
+                repeatCount="indefinite"
+              />
+              <set attributeName="fill" to="lightblue" begin="0s" />
+            </circle>
+          </pattern>
+        </defs>
+        <rect
+          x="11"
+          y="11"
+          width="calc(100% - 22px)"
+          height="calc(100% - 22px)"
+          fill="url(#dotPattern)"
+        />
+      </svg>*/}
     </div>
   );
 };
