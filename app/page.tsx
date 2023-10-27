@@ -1,5 +1,5 @@
+import DotsBackground from '@doticons-website/app/components/Background/DotsBackground';
 import styles from './page.module.scss';
-import DotsBackground from '../components/DotsBackground';
 
 export default function Home() {
   return (
@@ -8,4 +8,3 @@ export default function Home() {
     </main>
   );
 }
-

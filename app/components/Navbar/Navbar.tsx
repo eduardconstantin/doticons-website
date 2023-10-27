@@ -1,15 +1,16 @@
-'use client';
-
+import { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import GitHubButton from 'react-github-btn';
-import packageJson from '../../../package.json';
+import { getPackageVersion } from '@doticons-website/app/utils/getPackageVersion';
+import GitButton from '../GitButton';
 import styles from './Navbar.module.scss';
 
-export default function Navbar() {
-  let version = packageJson.dependencies.doticons.includes('^')
-    ? packageJson.dependencies.doticons.replace('^', '')
-    : packageJson.dependencies.doticons;
+const Navbar: FC = async () => {
+  let version = 0;
+  await getPackageVersion()
+    .then((v) => (version = v))
+    .catch((error) => console.error(error));
+
   return (
     <nav className={styles.navbar}>
       <div className={styles.nav_grouped}>
@@ -27,17 +28,10 @@ export default function Navbar() {
             <p className={styles.version}>{'v' + version}</p>
           </Link>
         </div>
-        <GitHubButton
-          href="https://github.com/eduardconstantin/doticons"
-          data-color-scheme="no-preference: light; light: light; dark: dark;"
-          data-icon="octicon-star"
-          data-size="large"
-          data-show-count="true"
-          aria-label="Star doticons collection on GitHub"
-        >
-          Star
-        </GitHubButton>
+        <GitButton />
       </div>
     </nav>
   );
-}
+};
+
+export default Navbar;
