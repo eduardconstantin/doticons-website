@@ -1,7 +1,19 @@
 import { useEffect, useState } from 'react';
 
-const useDots = () => {
-  const [windowDimensions, setWindowDimensions] = useState({
+type WindowDimensions = {
+  width: number;
+  height: number;
+};
+
+type Dot = {
+  key: string;
+  cx: string;
+  cy: string;
+  r: number;
+};
+
+const useDots = (): { dots: Dot[]; viewBox: string } => {
+  const [windowDimensions, setWindowDimensions] = useState<WindowDimensions>({
     width: window.innerWidth,
     height: window.innerHeight,
   });
@@ -31,7 +43,7 @@ const useDots = () => {
     (windowDimensions.height - padding) / dotSpacing
   );
 
-  const dots = Array.from({ length: numberOfDotsY }, (_, i) =>
+  const dots: Dot[] = Array.from({ length: numberOfDotsY }, (_, i) =>
     Array.from({ length: numberOfDotsX }, (_, j) => ({
       key: `${i}-${j}`,
       cx: `${j * dotSpacing + dotRadius}px`,

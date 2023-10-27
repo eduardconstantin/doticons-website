@@ -1,9 +1,10 @@
 'use client';
 
+import { FC } from 'react';
 import useDots from '@doticons-website/app/hooks/useDots';
 import styles from './DotsBackground.module.scss';
 
-const DotsBackground = () => {
+const DotsBackground: FC = () => {
   const { dots, viewBox } = useDots();
 
   return (

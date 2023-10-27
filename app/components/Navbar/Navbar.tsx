@@ -1,10 +1,11 @@
+import { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getPackageVersion } from '@doticons-website/app/utils/getPackageVersion';
 import GitButton from '../GitButton';
 import styles from './Navbar.module.scss';
 
-const Navbar = async () => {
+const Navbar: FC = async () => {
   let version = 0;
   await getPackageVersion()
     .then((v) => (version = v))
