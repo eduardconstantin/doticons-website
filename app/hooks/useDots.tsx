@@ -14,11 +14,16 @@ type Dot = {
 
 const useDots = (): { dots: Dot[]; viewBox: string } => {
   const [windowDimensions, setWindowDimensions] = useState<WindowDimensions>({
-    width: window.innerWidth,
-    height: window.innerHeight,
+    width: 0,
+    height: 0,
   });
 
   useEffect(() => {
+    setWindowDimensions({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    });
+
     const handleResize = () => {
       setWindowDimensions({
         width: window.innerWidth,
