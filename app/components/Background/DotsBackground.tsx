@@ -5,7 +5,7 @@ import useDots from '@doticons-website/app/hooks/useDots';
 import styles from './DotsBackground.module.scss';
 
 const DotsBackground: FC = () => {
-  const { dots, viewBox } = useDots();
+  const { dots, r, c, viewBox } = useDots();
 
   return (
     <div className={styles.background}>
@@ -15,16 +15,24 @@ const DotsBackground: FC = () => {
         viewBox={viewBox}
         style={{ padding: '10px' }}
       >
-        {dots.map(({ key, cx, cy, r }) => (
-          <circle
-            key={key}
-            cx={cx}
-            cy={cy}
-            r={r}
-            fill="white"
-            fillOpacity={0.1}
-          />
-        ))}
+        <defs>
+          <pattern
+            id="dotPattern"
+            patternUnits="userSpaceOnUse"
+            width={c}
+            height={c}
+          >
+            <circle
+              cx={c / 2}
+              cy={c / 2}
+              r={r}
+              fill="white"
+              fillOpacity="0.1"
+            />
+          </pattern>
+        </defs>
+
+        <rect width="100%" height="100%" fill="url(#dotPattern)" />
       </svg>
     </div>
   );

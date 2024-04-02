@@ -12,7 +12,7 @@ type Dot = {
   r: number;
 };
 
-const useDots = (): { dots: Dot[]; viewBox: string } => {
+const useDots = (): { dots: Dot[]; viewBox: string; c: number; r: number } => {
   const [windowDimensions, setWindowDimensions] = useState<WindowDimensions>({
     width: 0,
     height: 0,
@@ -44,9 +44,12 @@ const useDots = (): { dots: Dot[]; viewBox: string } => {
   const numberOfDotsX = Math.ceil(
     (windowDimensions.width - padding) / dotSpacing
   );
-  const numberOfDotsY = Math.ceil(
+  const numberOfDotsY = Math.floor(
     (windowDimensions.height - padding) / dotSpacing
   );
+
+  const tileSizeX = (windowDimensions.width - padding) / numberOfDotsX;
+  const tileSizeY = (windowDimensions.height - 2 * padding) / numberOfDotsY;
 
   const dots: Dot[] = Array.from({ length: numberOfDotsY }, (_, i) =>
     Array.from({ length: numberOfDotsX }, (_, j) => ({
@@ -59,9 +62,9 @@ const useDots = (): { dots: Dot[]; viewBox: string } => {
 
   return {
     dots,
-    viewBox: `0 0 ${numberOfDotsX * dotSpacing - padding} ${
-      numberOfDotsY * dotSpacing - padding
-    }`,
+    c: dotSpacing,
+    r: dotRadius,
+    viewBox: `0 0 ${numberOfDotsX * tileSizeX} ${numberOfDotsY * tileSizeY}`,
   };
 };
 
