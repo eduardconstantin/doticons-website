@@ -36,7 +36,7 @@ const DotsBackground: FC = () => {
 
         <rect width="100%" height="100%" fill="url(#dotPattern)" />
 
-        <use href="#doticon" x={iconXPos} y="128" fill="white" />
+        <use href="#doticon" x={iconXPos} y="160" fill="white" />
       </svg>
     </div>
   );
