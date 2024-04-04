@@ -1,11 +1,12 @@
 'use client';
 
-import { FC } from 'react';
+import { type FC } from 'react';
 import useDots from '@doticons-website/app/hooks/useDots';
+import { GithubDoticon } from 'doticons/16/index';
 import styles from './DotsBackground.module.scss';
 
 const DotsBackground: FC = () => {
-  const { dots, r, c, viewBox } = useDots();
+  const { cellSize, dotRadius, iconXPos, viewBox } = useDots();
 
   return (
     <div className={styles.background}>
@@ -19,20 +20,23 @@ const DotsBackground: FC = () => {
           <pattern
             id="dotPattern"
             patternUnits="userSpaceOnUse"
-            width={c}
-            height={c}
+            width={cellSize}
+            height={cellSize}
           >
             <circle
-              cx={c / 2}
-              cy={c / 2}
-              r={r}
+              cx={cellSize / 2}
+              cy={cellSize / 2}
+              r={dotRadius}
               fill="white"
               fillOpacity="0.1"
             />
           </pattern>
+          <GithubDoticon viewBox={viewBox} id="doticon" />
         </defs>
 
         <rect width="100%" height="100%" fill="url(#dotPattern)" />
+
+        <use href="#doticon" x={iconXPos} y="128" fill="white" />
       </svg>
     </div>
   );

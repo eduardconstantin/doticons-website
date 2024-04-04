@@ -5,14 +5,12 @@ type WindowDimensions = {
   height: number;
 };
 
-type Dot = {
-  key: string;
-  cx: string;
-  cy: string;
-  r: number;
-};
-
-const useDots = (): { dots: Dot[]; viewBox: string; c: number; r: number } => {
+const useDots = (): {
+  viewBox: string;
+  dotRadius: number;
+  iconXPos: number;
+  cellSize: number;
+} => {
   const [windowDimensions, setWindowDimensions] = useState<WindowDimensions>({
     width: 0,
     height: 0,
@@ -38,33 +36,26 @@ const useDots = (): { dots: Dot[]; viewBox: string; c: number; r: number } => {
     };
   }, []);
 
-  const dotRadius = 13;
+  const dotRadius = 11.4;
   const padding = 10;
-  const dotSpacing = dotRadius * 2 + 11;
-  const numberOfDotsX = Math.ceil(
-    (windowDimensions.width - padding) / dotSpacing
+  const cellSize = dotRadius * 2 + 9.15;
+  const numberOfDotsX = Math.floor(
+    (windowDimensions.width - padding) / cellSize
   );
   const numberOfDotsY = Math.floor(
-    (windowDimensions.height - padding) / dotSpacing
+    (windowDimensions.height - padding) / cellSize
   );
 
-  const tileSizeX = (windowDimensions.width - padding) / numberOfDotsX;
-  const tileSizeY = (windowDimensions.height - 2 * padding) / numberOfDotsY;
+  const viewBoxWidth = numberOfDotsX * cellSize;
+  const viewBoxHeight = numberOfDotsY * cellSize;
 
-  const dots: Dot[] = Array.from({ length: numberOfDotsY }, (_, i) =>
-    Array.from({ length: numberOfDotsX }, (_, j) => ({
-      key: `${i}-${j}`,
-      cx: `${j * dotSpacing + dotRadius}px`,
-      cy: `${i * dotSpacing + dotRadius}px`,
-      r: dotRadius,
-    }))
-  ).flat();
+  const iconXPos = viewBoxWidth - 512 - cellSize * 2;
 
   return {
-    dots,
-    c: dotSpacing,
-    r: dotRadius,
-    viewBox: `0 0 ${numberOfDotsX * tileSizeX} ${numberOfDotsY * tileSizeY}`,
+    cellSize,
+    dotRadius,
+    iconXPos,
+    viewBox: `0 0 ${viewBoxWidth} ${viewBoxHeight}`,
   };
 };
 
