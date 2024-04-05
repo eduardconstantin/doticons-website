@@ -8,12 +8,12 @@ type WindowDimensions = {
 const useDots = (): {
   viewBox: string;
   dotRadius: number;
-  iconXPos: number;
+  iconXPos: string;
   cellSize: number;
 } => {
   const [windowDimensions, setWindowDimensions] = useState<WindowDimensions>({
-    width: 0,
-    height: 0,
+    width: 1,
+    height: 1,
   });
 
   useEffect(() => {
@@ -37,25 +37,28 @@ const useDots = (): {
   }, []);
 
   const dotRadius = 11.4;
-  const padding = 10;
-  const cellSize = dotRadius * 2 + 9.15;
-  const numberOfDotsX = Math.floor(
-    (windowDimensions.width - padding) / cellSize
-  );
-  const numberOfDotsY = Math.floor(
-    (windowDimensions.height - padding) / cellSize
-  );
+  const cellSize = dotRadius * 2 + 9.2;
+  const numberOfDotsX = Math.ceil(windowDimensions.width / cellSize);
+  const numberOfDotsY = Math.ceil(windowDimensions.height / cellSize);
 
   const viewBoxWidth = numberOfDotsX * cellSize;
   const viewBoxHeight = numberOfDotsY * cellSize;
 
-  const iconXPos = viewBoxWidth - 512 - cellSize * 2;
+  const scaleFactor =
+    windowDimensions.width < 700 ? 1.2 : viewBoxWidth / (cellSize * 56);
+  const iconXPos = viewBoxWidth / scaleFactor - 512 - cellSize * 2;
 
   return {
     cellSize,
     dotRadius,
-    iconXPos,
-    viewBox: `0 0 ${viewBoxWidth} ${viewBoxHeight}`,
+    iconXPos:
+      windowDimensions.width < 700
+        ? `${viewBoxWidth * 1.5 - 512}`
+        : iconXPos.toString(),
+    viewBox:
+      windowDimensions.width < 700
+        ? `0 0 ${viewBoxWidth * 1.5} ${viewBoxHeight * 1.5}`
+        : `0 0 ${viewBoxWidth / scaleFactor} ${viewBoxHeight / scaleFactor}`,
   };
 };
 

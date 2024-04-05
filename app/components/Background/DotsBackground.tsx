@@ -14,7 +14,7 @@ const DotsBackground: FC = () => {
         width="100%"
         height="100%"
         viewBox={viewBox}
-        style={{ padding: '10px' }}
+        style={{ padding: '5px' }}
       >
         <defs>
           <pattern
@@ -31,7 +31,7 @@ const DotsBackground: FC = () => {
               fillOpacity="0.1"
             />
           </pattern>
-          <GithubDoticon viewBox={viewBox} id="doticon" />
+          <GithubDoticon viewBox={undefined} id="doticon" />
         </defs>
 
         <rect width="100%" height="100%" fill="url(#dotPattern)" />
