@@ -45,19 +45,18 @@ const useDots = (): {
   const viewBoxHeight = numberOfDotsY * cellSize;
 
   const scaleFactor =
-    windowDimensions.width < 700 ? 1.2 : viewBoxWidth / (cellSize * 56);
+    windowDimensions.width < 700
+      ? viewBoxWidth / (cellSize * 8)
+      : viewBoxWidth / (cellSize * 56);
   const iconXPos = viewBoxWidth / scaleFactor - 512 - cellSize * 2;
 
   return {
     cellSize,
     dotRadius,
-    iconXPos:
-      windowDimensions.width < 700
-        ? `${viewBoxWidth * 1.5 - 512}`
-        : iconXPos.toString(),
+    iconXPos: windowDimensions.width < 700 ? `${32}` : iconXPos.toString(),
     viewBox:
       windowDimensions.width < 700
-        ? `0 0 ${viewBoxWidth * 1.5} ${viewBoxHeight * 1.5}`
+        ? `0 0 ${576} ${1248}`
         : `0 0 ${viewBoxWidth / scaleFactor} ${viewBoxHeight / scaleFactor}`,
   };
 };
