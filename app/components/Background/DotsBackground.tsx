@@ -6,16 +6,11 @@ import { GithubDoticon } from 'doticons/16/index';
 import styles from './DotsBackground.module.scss';
 
 const DotsBackground: FC = () => {
-  const { cellSize, dotRadius, iconXPos, viewBox } = useDots();
+  const { cellSize, dotRadius, iconPos, viewBox } = useDots();
 
   return (
     <div className={styles.background}>
-      <svg
-        width="100%"
-        height="100%"
-        viewBox={viewBox}
-        style={{ padding: '5px' }}
-      >
+      <svg viewBox={viewBox} width="100%" height="100%">
         <defs>
           <pattern
             id="dotPattern"
@@ -31,12 +26,17 @@ const DotsBackground: FC = () => {
               fillOpacity="0.1"
             />
           </pattern>
-          <GithubDoticon viewBox={undefined} id="doticon" />
+          <GithubDoticon
+            viewBox={undefined}
+            width="100%"
+            height="100%"
+            id="doticon"
+          />
         </defs>
 
         <rect width="100%" height="100%" fill="url(#dotPattern)" />
 
-        <use href="#doticon" x={iconXPos} y="160" fill="white" />
+        <use href="#doticon" x={iconPos.x} y={iconPos.y} fill="white" />
       </svg>
     </div>
   );

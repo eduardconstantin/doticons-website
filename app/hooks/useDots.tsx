@@ -5,10 +5,15 @@ type WindowDimensions = {
   height: number;
 };
 
+type IconPosition = {
+  x: string;
+  y: string;
+};
+
 const useDots = (): {
   viewBox: string;
   dotRadius: number;
-  iconXPos: string;
+  iconPos: IconPosition;
   cellSize: number;
 } => {
   const [windowDimensions, setWindowDimensions] = useState<WindowDimensions>({
@@ -37,27 +42,29 @@ const useDots = (): {
   }, []);
 
   const dotRadius = 11.4;
-  const cellSize = dotRadius * 2 + 9.2;
-  const numberOfDotsX = Math.ceil(windowDimensions.width / cellSize);
-  const numberOfDotsY = Math.ceil(windowDimensions.height / cellSize);
+  const cellSize = 32;
+  const numberOfDotsX = (windowDimensions.width - 10) / cellSize;
+  const numberOfDotsY = (windowDimensions.height - 10) / cellSize;
 
   const viewBoxWidth = numberOfDotsX * cellSize;
   const viewBoxHeight = numberOfDotsY * cellSize;
 
   const scaleFactor =
-    windowDimensions.width < 700
-      ? viewBoxWidth / (cellSize * 8)
-      : viewBoxWidth / (cellSize * 56);
-  const iconXPos = viewBoxWidth / scaleFactor - 512 - cellSize * 2;
+    windowDimensions.width < 800
+      ? viewBoxWidth / (cellSize * 20)
+      : viewBoxWidth / (cellSize * 57);
+  const iconXPos =
+    windowDimensions.width < 800
+      ? (viewBoxWidth / scaleFactor - 512) / 2
+      : viewBoxWidth / scaleFactor - 512 - cellSize * 3;
+
+  const iconYPos = windowDimensions.width < 800 ? '448' : '160';
 
   return {
     cellSize,
     dotRadius,
-    iconXPos: windowDimensions.width < 700 ? `${32}` : iconXPos.toString(),
-    viewBox:
-      windowDimensions.width < 700
-        ? `0 0 ${576} ${1248}`
-        : `0 0 ${viewBoxWidth / scaleFactor} ${viewBoxHeight / scaleFactor}`,
+    iconPos: { x: iconXPos.toString(), y: iconYPos },
+    viewBox: `0 0 ${viewBoxWidth / scaleFactor} ${viewBoxHeight / scaleFactor}`,
   };
 };
 
