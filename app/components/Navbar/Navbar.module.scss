@@ -11,7 +11,7 @@
   height: 75px;
 
   .nav_grouped {
-    width: 90%;
+    width: 89%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -24,7 +24,7 @@
 
       .version {
         font-size: 0.8rem;
-        color: white;
+        color: rgba(255, 255, 255, 0.5);
         margin-left: 2.5rem;
         &:hover {
           text-decoration: underline;
