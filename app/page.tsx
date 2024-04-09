@@ -11,8 +11,10 @@ export default function Home() {
         </h1>
         <div className={styles.links}>
           <p>MIT LICENSE</p>
-          <Link href={'#'}>DOCUMENTATION</Link>
-          <Link href={'#'}>NPM PACKAGE</Link>
+          <Link href="https://github.com/eduardconstantin/doticons">
+            DOCUMENTATION
+          </Link>
+          <Link href="https://www.npmjs.com/package/doticons">NPM PACKAGE</Link>
         </div>
       </section>
       <DotsBackground />
