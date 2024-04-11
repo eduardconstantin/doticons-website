@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import DotsBackground from '@doticons-website/app/components/Background/DotsBackground';
+import Search from '@doticons-website/app/components/Search/Search';
 import styles from './page.module.scss';
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
           <Link href="https://www.npmjs.com/package/doticons">NPM PACKAGE</Link>
         </div>
       </section>
+      <Search />
       <DotsBackground />
     </main>
   );
