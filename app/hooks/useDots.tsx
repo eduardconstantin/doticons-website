@@ -24,13 +24,14 @@ const useDots = (): {
   useEffect(() => {
     setWindowDimensions({
       width: window.innerWidth,
-      height: window.innerHeight,
+      height: document.getElementById('main')?.getBoundingClientRect().height!,
     });
 
     const handleResize = () => {
       setWindowDimensions({
         width: window.innerWidth,
-        height: window.innerHeight,
+        height: document.getElementById('main')?.getBoundingClientRect()
+          .height!,
       });
     };
 
