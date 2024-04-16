@@ -1,7 +1,7 @@
 .searchContainer {
   width: 100%;
   position: absolute;
-  bottom: 42px;
+  top: calc(100vh - 103px);
   display: flex;
   justify-content: center;
 
