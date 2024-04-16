@@ -8,11 +8,16 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  position: relative;
 }
 
 body {
   color: rgb(255, 255, 255);
   background: #0d1117;
+}
+
+main {
+  position: relative;
 }
 
 a {

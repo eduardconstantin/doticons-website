@@ -5,7 +5,7 @@ import styles from './page.module.scss';
 
 export default function Home() {
   return (
-    <main>
+    <main id="main">
       <section className={styles.intro}>
         <div className={styles.introContent}>
           <h1>
