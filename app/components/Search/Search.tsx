@@ -1,6 +1,6 @@
 'use client';
 
-import { FC } from 'react';
+import { type FC } from 'react';
 import Image from 'next/image';
 import styles from './Search.module.scss';
 

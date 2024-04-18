@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import DotsBackground from '@doticons-website/app/components/Background/DotsBackground';
+import IconSwitchers from '@doticons-website/app/components/IconSwitchers/IconSwitchers';
 import Search from '@doticons-website/app/components/Search/Search';
 import styles from './page.module.scss';
 
@@ -23,7 +24,9 @@ export default function Home() {
         </div>
       </section>
       <Search />
-      <section id="content" className={styles.content}></section>
+      <section id="content" className={styles.content}>
+        <IconSwitchers />
+      </section>
       <DotsBackground />
     </main>
   );
