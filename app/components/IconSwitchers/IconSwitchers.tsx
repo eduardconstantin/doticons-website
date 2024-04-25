@@ -26,10 +26,14 @@ const IconSwitchers: FC = () => {
           <span>Less detailed</span>
         </button>
       </div>
-      <div>
+      <div className={styles.iconsContainer}>
         {Object.keys(Icons16).map((iconKey) => {
           const Icon = Icons16[iconKey as keyof typeof Icons16];
-          return <Icon key={iconKey} fill={'white'} />;
+          return (
+            <div key={iconKey} className={styles.iconContainer}>
+              <Icon fill={'white'} />
+            </div>
+          );
         })}
       </div>
     </>
