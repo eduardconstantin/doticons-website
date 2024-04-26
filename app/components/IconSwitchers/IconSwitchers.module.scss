@@ -43,5 +43,9 @@
     background: rgba(23, 27, 33, 0.2);
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
+
+    &:hover {
+      border-color: rgba(255, 255, 255, 1);
+    }
   }
 }
