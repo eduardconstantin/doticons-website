@@ -45,7 +45,7 @@ const useDots = (): {
   const dotRadius = 11.4;
   const cellSize = 32;
   const numberOfDotsX = (windowDimensions.width - 10) / cellSize;
-  const numberOfDotsY = (windowDimensions.height - 10) / cellSize;
+  const numberOfDotsY = Math.ceil((windowDimensions.height - 10) / cellSize);
 
   const viewBoxWidth = numberOfDotsX * cellSize;
   const viewBoxHeight = numberOfDotsY * cellSize;
