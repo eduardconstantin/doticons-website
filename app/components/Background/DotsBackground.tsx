@@ -10,7 +10,7 @@ const DotsBackground: FC = () => {
 
   return (
     <div className={styles.background}>
-      <svg viewBox={viewBox} width="100%" height="100%">
+      <svg viewBox={viewBox}>
         <defs>
           <pattern
             id="dotPattern"

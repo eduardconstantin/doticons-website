@@ -30,13 +30,13 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  padding-top: 37px;
+  padding-top: 36px;
   padding-inline: 106px;
-  gap: 1.68vw;
+  gap: 33px;
 
   .iconContainer {
-    width: calc((100vw - 212px - 1.68vw * 7 + 14px) / 7);
-    height: calc((100vw - 212px - 1.68vw * 7 + 14px) / 7);
+    width: calc(33px * 7);
+    height: calc(33px * 7);
     padding: 2.5vw;
     border-radius: 13px;
     border: 1px solid rgba(255, 255, 255, 0.3);
