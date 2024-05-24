@@ -31,4 +31,11 @@
 .content {
   height: 100%;
   padding-bottom: 128px;
+  margin-inline: 10px;
+  background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.1) 51%,
+      rgba(255, 255, 255, 0) 54%
+    )
+    1px -4px / 33px 33px;
 }
