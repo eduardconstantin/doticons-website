@@ -40,6 +40,10 @@ const IconSwitchers: FC = () => {
           const Icon = iconSet[iconKey as keyof typeof iconSet];
           return (
             <div key={iconKey} className={styles.iconContainer}>
+              <div className={styles.controls}>
+                <button onClick={() => {}}>JSX</button>
+                <button onClick={() => {}}>SVG</button>
+              </div>
               <Icon fill={'white'} />
             </div>
           );
