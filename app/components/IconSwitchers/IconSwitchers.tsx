@@ -11,6 +11,16 @@ const IconSwitchers: FC = () => {
     Icons32
   );
 
+  const handleCopyJSX = async (iconKey: string) => {
+    const icon = `<${iconKey} />`;
+    try {
+      await navigator.clipboard.writeText(icon);
+      console.log(icon);
+    } catch (error) {
+      console.error('Error copying to clipboard:', error);
+    }
+  };
+
   return (
     <>
       <div className={styles.btnContainer}>
@@ -41,8 +51,8 @@ const IconSwitchers: FC = () => {
           return (
             <div key={iconKey} className={styles.iconContainer}>
               <div className={styles.controls}>
-                <button onClick={() => {}}>JSX</button>
-                <button onClick={() => {}}>SVG</button>
+                <button onClick={() => handleCopyJSX(iconKey)}>JSX</button>
+                <button onClick={() => handleCopySVG(Icon)}>SVG</button>
               </div>
               <Icon fill={'white'} />
             </div>
