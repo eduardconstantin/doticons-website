@@ -22,7 +22,6 @@ const IconSwitchers: FC = () => {
   };
 
   const handleCopySVG = async (iconSVG: any) => {
-    console.log(iconSVG);
     try {
       await navigator.clipboard.writeText(iconSVG.outerHTML);
     } catch (error) {
