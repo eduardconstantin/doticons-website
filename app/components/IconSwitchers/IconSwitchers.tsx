@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, type FC } from 'react';
+import { useRef, useState, type FC } from 'react';
 import * as Icons16 from 'doticons/16/index';
 import * as Icons32 from 'doticons/32/index';
 import styles from './IconSwitchers.module.scss';
@@ -10,6 +10,24 @@ const IconSwitchers: FC = () => {
   const [iconSet, setIconSet] = useState<typeof Icons32 | typeof Icons16>(
     Icons32
   );
+  const svgRefs = useRef<Record<string, SVGSVGElement>>({});
+
+  const handleCopyJSX = async (iconKey: string) => {
+    const icon = `<${iconKey} />`;
+    try {
+      await navigator.clipboard.writeText(icon);
+    } catch (error) {
+      console.error('Error copying to clipboard:', error);
+    }
+  };
+
+  const handleCopySVG = async (iconSVG: any) => {
+    try {
+      await navigator.clipboard.writeText(iconSVG.outerHTML);
+    } catch (error) {
+      console.error('Error copying to clipboard:', error);
+    }
+  };
 
   return (
     <>
@@ -38,9 +56,23 @@ const IconSwitchers: FC = () => {
       <div className={styles.iconsContainer}>
         {Object.keys(iconSet).map((iconKey) => {
           const Icon = iconSet[iconKey as keyof typeof iconSet];
+
           return (
             <div key={iconKey} className={styles.iconContainer}>
-              <Icon fill={'white'} />
+              <div className={styles.controls}>
+                <button onClick={() => handleCopyJSX(iconKey)}>JSX</button>
+                <button onClick={() => handleCopySVG(svgRefs.current[iconKey])}>
+                  SVG
+                </button>
+              </div>
+              <Icon
+                ref={(el: SVGSVGElement) => {
+                  svgRefs.current[iconKey] = el;
+                }}
+                fill={'white'}
+                width={'100%'}
+                height={'100%'}
+              />
             </div>
           );
         })}
