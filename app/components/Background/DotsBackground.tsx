@@ -2,11 +2,12 @@
 
 import { type FC } from 'react';
 import useDots from '@doticons-website/app/hooks/useDots';
-import { GithubDoticon } from 'doticons/16/index';
+import * as Icons16 from 'doticons/16/index';
 import styles from './DotsBackground.module.scss';
 
 const DotsBackground: FC = () => {
   const { cellSize, dotRadius, iconPos, viewBox } = useDots();
+  const { GithubDoticon } = Icons16;
 
   return (
     <div className={styles.background}>
