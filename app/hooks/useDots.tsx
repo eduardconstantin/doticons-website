@@ -17,8 +17,8 @@ const useDots = (): {
   cellSize: number;
 } => {
   const [windowDimensions, setWindowDimensions] = useState<WindowDimensions>({
-    width: 1,
-    height: 1,
+    width: 1920,
+    height: 1080,
   });
 
   useEffect(() => {
