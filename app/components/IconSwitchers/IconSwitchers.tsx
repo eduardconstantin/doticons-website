@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useState, type FC } from 'react';
+import Search from '@doticons-website/app/components/Search/Search';
 import * as Icons16 from 'doticons/16/index';
 import * as Icons32 from 'doticons/32/index';
 import styles from './IconSwitchers.module.scss';
@@ -10,6 +11,7 @@ const IconSwitchers: FC = () => {
   const [iconSet, setIconSet] = useState<typeof Icons32 | typeof Icons16>(
     Icons32
   );
+  const [searchText, setSearchText] = useState<string>('');
   const svgRefs = useRef<Record<string, SVGSVGElement>>({});
 
   const handleCopyJSX = async (iconKey: string) => {
@@ -29,8 +31,13 @@ const IconSwitchers: FC = () => {
     }
   };
 
+  const filterIcons = Object.keys(iconSet).filter((iconKey) => {
+    return iconKey.toLowerCase().includes(searchText.toLowerCase());
+  });
+
   return (
     <>
+      <Search onChange={setSearchText} />
       <div className={styles.btnContainer}>
         <button
           className={activeButton === 'detailed' ? styles.selected : ''}
@@ -54,28 +61,34 @@ const IconSwitchers: FC = () => {
         </button>
       </div>
       <div className={styles.iconsContainer}>
-        {Object.keys(iconSet).map((iconKey) => {
-          const Icon = iconSet[iconKey as keyof typeof iconSet];
+        {filterIcons.length > 0 ? (
+          filterIcons.map((iconKey) => {
+            const Icon = iconSet[iconKey as keyof typeof iconSet];
 
-          return (
-            <div key={iconKey} className={styles.iconContainer}>
-              <div className={styles.controls}>
-                <button onClick={() => handleCopyJSX(iconKey)}>JSX</button>
-                <button onClick={() => handleCopySVG(svgRefs.current[iconKey])}>
-                  SVG
-                </button>
+            return (
+              <div key={iconKey} className={styles.iconContainer}>
+                <div className={styles.controls}>
+                  <button onClick={() => handleCopyJSX(iconKey)}>JSX</button>
+                  <button
+                    onClick={() => handleCopySVG(svgRefs.current[iconKey])}
+                  >
+                    SVG
+                  </button>
+                </div>
+                <Icon
+                  ref={(el: SVGSVGElement) => {
+                    svgRefs.current[iconKey] = el;
+                  }}
+                  fill={'white'}
+                  width={'100%'}
+                  height={'100%'}
+                />
               </div>
-              <Icon
-                ref={(el: SVGSVGElement) => {
-                  svgRefs.current[iconKey] = el;
-                }}
-                fill={'white'}
-                width={'100%'}
-                height={'100%'}
-              />
-            </div>
-          );
-        })}
+            );
+          })
+        ) : (
+          <p className={styles.noIcon}>No icons found.</p>
+        )}
       </div>
     </>
   );

@@ -4,7 +4,7 @@ import { type FC } from 'react';
 import Image from 'next/image';
 import styles from './Search.module.scss';
 
-const Search: FC = () => {
+const Search: FC<{ onChange: (value: string) => void }> = ({ onChange }) => {
   return (
     <div className={styles.searchContainer}>
       <input
@@ -21,6 +21,7 @@ const Search: FC = () => {
             behavior: 'smooth',
           });
         }}
+        onChange={(e) => onChange(e.target.value)}
         onFocus={(e) => (e.target.placeholder = '')}
         onBlur={(e) => (e.target.placeholder = 'Search icons')}
       />
