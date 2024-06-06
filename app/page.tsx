@@ -4,7 +4,7 @@ import IconSwitchers from '@doticons-website/app/components/IconSwitchers/IconSw
 import styles from './page.module.scss';
 
 async function wait() {
-  await new Promise((resolve) => setTimeout(resolve, 1500));
+  await new Promise((resolve) => setTimeout(resolve, 600));
   return 'ok';
 }
 
