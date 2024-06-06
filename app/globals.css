@@ -44,3 +44,17 @@ a {
   align-items: center;
   justify-content: center;
 }
+
+#doticon {
+  opacity: 0;
+  animation: fade 3s ease-in-out forwards;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
