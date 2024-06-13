@@ -51,14 +51,14 @@ const useDots = (): {
 
   const scaleFactor =
     windowDimensions.width < 800
-      ? viewBoxWidth / (cellSize * 20)
+      ? viewBoxWidth / (cellSize * 22)
       : viewBoxWidth / (cellSize * 57);
   const iconXPos =
     windowDimensions.width < 800
       ? (viewBoxWidth / scaleFactor - 512) / 2
       : viewBoxWidth / scaleFactor - 512 - cellSize * 3;
 
-  const iconYPos = windowDimensions.width < 800 ? '448' : '160';
+  const iconYPos = windowDimensions.width < 800 ? '96' : '160';
 
   return {
     cellSize,
