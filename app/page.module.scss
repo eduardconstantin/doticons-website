@@ -47,13 +47,15 @@
 
     .introContent {
       align-items: center;
-      padding-inline: 74px;
+      padding-inline: 10vw;
       gap: 2rem;
-      margin-top: 73%;
-
+      margin-top: 64%;
+      .links {
+        font-size: 2vw;
+      }
       h1 {
         text-align: center;
-        font-size: 45px;
+        font-size: 6vw;
         line-height: 110%;
       }
     }
