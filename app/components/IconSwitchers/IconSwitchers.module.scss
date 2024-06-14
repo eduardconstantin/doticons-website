@@ -100,3 +100,14 @@
   text-transform: uppercase;
   font-weight: bold;
 }
+
+@media only screen and (max-width: 800px) {
+  .btnContainer {
+    gap: 40px;
+    flex-direction: column;
+    padding-inline: 33px;
+  }
+  .iconsContainer {
+    padding-inline: 32px;
+  }
+}

@@ -27,3 +27,15 @@
     }
   }
 }
+
+@media only screen and (max-width: 800px) {
+  .searchContainer {
+    width: 97%;
+    img {
+      left: 47px;
+    }
+    .search {
+      width: calc(100% - 64px);
+    }
+  }
+}
