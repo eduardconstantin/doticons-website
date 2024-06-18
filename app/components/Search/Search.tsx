@@ -1,7 +1,7 @@
 'use client';
 
 import { type FC } from 'react';
-import Image from 'next/image';
+import { SearchDoticon } from 'doticons/16';
 import styles from './Search.module.scss';
 
 const Search: FC<{ onChange: (value: string) => void }> = ({ onChange }) => {
@@ -25,13 +25,7 @@ const Search: FC<{ onChange: (value: string) => void }> = ({ onChange }) => {
         onFocus={(e) => (e.target.placeholder = '')}
         onBlur={(e) => (e.target.placeholder = 'Search icons')}
       />
-      <Image
-        draggable="false"
-        width={40}
-        height={40}
-        src="/search32.svg"
-        alt="search icon"
-      />
+      <SearchDoticon fill="#fff" width="45px" height="45px" />
     </div>
   );
 };
