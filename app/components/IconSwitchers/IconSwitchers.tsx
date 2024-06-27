@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState, type FC } from 'react';
+import { useEffect, useRef, useState, type FC } from 'react';
 import Search from '@doticons-website/app/components/Search/Search';
 import * as Icons16 from 'doticons/16/index';
 import * as Icons32 from 'doticons/32/index';
@@ -13,6 +13,23 @@ const IconSwitchers: FC = () => {
   );
   const [searchText, setSearchText] = useState<string>('');
   const svgRefs = useRef<Record<string, SVGSVGElement>>({});
+
+  const [showBtns, setShowBtns] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const scrollPosition =
+        window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollPosition > 890) {
+        setShowBtns(true);
+      } else {
+        setShowBtns(false);
+      }
+    };
+
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const handleCopyJSX = async (iconKey: string) => {
     const icon = `<${iconKey} />`;
@@ -35,26 +52,30 @@ const IconSwitchers: FC = () => {
     return iconKey.toLowerCase().includes(searchText.toLowerCase());
   });
 
+  const onSwitchIcons = (type: string) => {
+    setActiveButton(type);
+    setIconSet(type === 'detailed' ? Icons32 : Icons16);
+  };
+
   return (
     <>
-      <Search onChange={setSearchText} />
+      <Search
+        onChange={setSearchText}
+        activeButton={activeButton}
+        onSwitch={onSwitchIcons}
+        showBtns={showBtns}
+      />
       <div className={styles.btnContainer}>
         <button
           className={activeButton === 'detailed' ? styles.selected : ''}
-          onClick={() => {
-            setActiveButton('detailed');
-            setIconSet(Icons32);
-          }}
+          onClick={() => onSwitchIcons('detailed')}
         >
           <p>32x32 DOT MATRIX</p>
           <span>More detailed</span>
         </button>
         <button
           className={activeButton === 'lessDetailed' ? styles.selected : ''}
-          onClick={() => {
-            setActiveButton('lessDetailed');
-            setIconSet(Icons16);
-          }}
+          onClick={() => onSwitchIcons('lessDetailed')}
         >
           <p>16x16 DOT MATRIX</p>
           <span>Less detailed</span>
