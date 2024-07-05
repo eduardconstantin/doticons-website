@@ -1,5 +1,7 @@
 export const getPackageVersion = async () => {
-  const response = await fetch(`https://registry.npmjs.org/doticons`);
+  const response = await fetch(`https://registry.npmjs.org/doticons`, {
+    cache: 'no-cache',
+  });
 
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);
