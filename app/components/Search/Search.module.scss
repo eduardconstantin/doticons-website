@@ -54,17 +54,32 @@
     &::placeholder {
       color: rgba(255, 255, 255, 0.4);
     }
+
+    &:focus {
+      outline: none;
+      border: 1px solid rgba(255, 255, 255, 1);
+    }
   }
 }
 
 @media only screen and (max-width: 800px) {
   .searchContainer {
-    width: 97%;
     svg {
-      left: 47px;
+      left: 27px;
     }
     .search {
-      width: calc(100% - 64px);
+      width: calc(100% - 32px);
+      padding-left: 64px;
+    }
+    .types {
+      right: 24px;
+      gap: 0.25rem;
+      flex-direction: column;
+      justify-content: center;
+
+      button {
+        padding: 0.25rem 1rem;
+      }
     }
   }
 }
