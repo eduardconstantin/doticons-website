@@ -10,7 +10,7 @@ Thank you for taking the time to open an issue.
 
 Before opening an issue, please be sure that your issue hasn't already been asked by someone.
 
-To begin  go to issues tab, select one of the templates and follow the instructions.
+To begin go to issues tab, select one of the templates and follow the instructions.
 <br><br>
 
 When creating issues, keep these key points in mind:
@@ -19,9 +19,10 @@ When creating issues, keep these key points in mind:
 - A thorough description of the issue, (one word descriptions are very hard to understand)
 - Screenshots (if appropriate)
 - Links (if appropriate)
-<br><br>
-  
+  <br><br>
+
 # TLTR: Create a Pull Request
+
 1. Fork this repository.
 2. Clone your new repository to your system.
 3. Switch to dev branch.
