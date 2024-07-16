@@ -8,14 +8,43 @@
 <div align="center">
   <br />
   
-[![Project license](https://img.shields.io/github/license/eduardconstantin/doticons-website?style=flat-square)](LICENSE)
 [![Contributors](https://img.shields.io/github/contributors/eduardconstantin/doticons-website?style=flat-square)](https://github.com/eduardconstantin/doticons-website/graphs/contributors)
 [![Issue](https://img.shields.io/github/issues/eduardconstantin/doticons-website?style=flat-square)](https://github.com/eduardconstantin/doticons-website/issues)
 [![PRs](https://img.shields.io/github/issues-pr/eduardconstantin/doticons-website?style=flat-square)](https://github.com/eduardconstantin/doticons-website/pulls)
+<br />
+[![Project license](https://img.shields.io/github/license/eduardconstantin/doticons-website?style=flat-square)](LICENSE)
 [![Stars](https://img.shields.io/github/stars/eduardconstantin/doticons-website?style=flat-square)](https://github.com/eduardconstantin/doticons-website/stargazers)
 
 </div>
 <br />
+
+## 🌟 Technology Stack
+
+[NextJS 13](https://nextjs.org) </br>
+[TypeScript](https://typescriptlang.org) </br>
+[Sass](https://sass-lang.com) </br>
+
+## 🌱 Getting Started
+
+Clone the repository:
+
+```bash
+git clone https://github.com/eduardconstantin/doticons-website.git
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the app:
+
+```bash
+npm run dev
+```
+
+Open your browser and navigate to [http://localhost:3000](http://localhost:3000).
 
 ## 👥 Contributing
 
