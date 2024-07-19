@@ -1,6 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Open_Sans } from 'next/font/google';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import Footer from './components/Footer/Footer';
 import Navbar from './components/Navbar/Navbar';
 
@@ -24,6 +25,7 @@ export default function RootLayout({
         {children}
         <Footer />
       </body>
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_TRACKING_ID!} />
     </html>
   );
 }
