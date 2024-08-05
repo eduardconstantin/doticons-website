@@ -3,13 +3,7 @@ import DotsBackground from '@doticons-website/app/components/Background/DotsBack
 import IconSwitchers from '@doticons-website/app/components/IconSwitchers/IconSwitchers';
 import styles from './page.module.scss';
 
-async function wait() {
-  await new Promise((resolve) => setTimeout(resolve, 700));
-  return;
-}
-
 export default async function Home() {
-  await wait();
   return (
     <main id="main">
       <section className={styles.intro}>
