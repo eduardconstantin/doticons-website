@@ -13,13 +13,9 @@ import styles from './DotsBackground.module.scss';
 
 const DotsBackground: FC = () => {
   const { cellSize, dotRadius, iconPos, viewBox } = useDots();
-  const [Icon, setIcon] = useState<
-    ForwardRefExoticComponent<SVGProps<SVGSVGElement>>
-  >(
-    Icons16['GithubDoticon'] as ForwardRefExoticComponent<
-      SVGProps<SVGSVGElement>
-    >
-  );
+  const [Icon, setIcon] = useState<ForwardRefExoticComponent<
+    SVGProps<SVGSVGElement>
+  > | null>(null);
 
   useEffect(() => {
     const randomNo = Math.floor(Math.random() * Object.keys(Icons16).length);
@@ -48,12 +44,21 @@ const DotsBackground: FC = () => {
               fillOpacity="0.1"
             />
           </pattern>
-          <Icon viewBox={undefined} width="100%" height="100%" id="doticon" />
         </defs>
 
         <rect width="100%" height="100%" fill="url(#dotPattern)" />
 
-        <use href="#doticon" x={iconPos.x} y={iconPos.y} fill="white" />
+        {Icon && (
+          <Icon
+            viewBox={undefined}
+            width="100%"
+            height="100%"
+            id="doticon"
+            x={iconPos.x}
+            y={iconPos.y}
+            fill="white"
+          />
+        )}
       </svg>
     </div>
   );
