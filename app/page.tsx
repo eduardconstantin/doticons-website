@@ -22,6 +22,7 @@ export default async function Home() {
           </div>
         </div>
       </section>
+      <div className={styles.divider}></div>
       <section id="content" className={styles.content}>
         <IconSwitchers />
       </section>
