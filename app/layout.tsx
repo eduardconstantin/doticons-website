@@ -9,8 +9,26 @@ const openSans = Open_Sans({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Doticons',
+  authors: [
+    {
+      name: 'Eduard-Constantin Ibinceanu',
+      url: 'https://eduardconstantin.github.io',
+    },
+  ],
   description:
     'A collection of versatile and visually appealing dot icons crafted in SVG format.',
+  keywords: [
+    'doticons',
+    'dot',
+    'icons',
+    'svg icons',
+    'svg',
+    'collection',
+    'library',
+  ],
+  generator: 'Next.js',
+  publisher: 'Vercel',
+  robots: 'index, follow',
 };
 
 export default function RootLayout({
