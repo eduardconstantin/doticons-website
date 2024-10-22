@@ -20,7 +20,7 @@
 
 ## 🌟 Technology Stack
 
-[NextJS 13](https://nextjs.org) </br>
+[NextJS 14](https://nextjs.org) </br>
 [TypeScript](https://typescriptlang.org) </br>
 [Sass](https://sass-lang.com) </br>
 
