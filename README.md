@@ -14,7 +14,7 @@
 <br />
 [![Project license](https://img.shields.io/github/license/eduardconstantin/doticons-website?style=flat-square)](LICENSE)
 [![Stars](https://img.shields.io/github/stars/eduardconstantin/doticons-website?style=flat-square)](https://github.com/eduardconstantin/doticons-website/stargazers)
-
+[![NPM](https://img.shields.io/npm/v/doticons?style=flat-square)](https://www.npmjs.com/package/doticons)
 </div>
 <br />
 
