@@ -4,6 +4,7 @@ import { Open_Sans } from 'next/font/google';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import Footer from './components/Footer/Footer';
 import Navbar from './components/Navbar/Navbar';
+import ReturnToTop from './components/ReturnToTop/ReturnToTop';
 
 const openSans = Open_Sans({ subsets: ['latin'] });
 
@@ -41,6 +42,7 @@ export default function RootLayout({
       <body className={openSans.className}>
         <Navbar />
         {children}
+        <ReturnToTop />
         <Footer />
       </body>
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_TRACKING_ID!} />

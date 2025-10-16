@@ -11,7 +11,7 @@ const Search: FC<{
   showBtns: boolean;
 }> = ({ onChange, activeButton, onSwitch, showBtns }) => {
   return (
-    <div className={styles.searchContainer}>
+    <div id="site-search-container" className={styles.searchContainer}>
       <div className={styles.stickySearch}>
         <input
           className={styles.search}
