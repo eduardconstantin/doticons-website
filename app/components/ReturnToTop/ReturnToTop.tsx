@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, type FC } from 'react';
-import { ArrowUpDoticon } from 'doticons/32';
+import { ArrowUpDoticon } from 'doticons/16';
 import styles from './ReturnToTop.module.scss';
 
 const ReturnToTop: FC = () => {
