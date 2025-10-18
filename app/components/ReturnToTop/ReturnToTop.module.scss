@@ -8,25 +8,21 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-  border: 1px solid rgba(255,255,255,0.08);
-  color: #fff;
   cursor: pointer;
   z-index: 60;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.45);
-  transition: transform 160ms ease, opacity 160ms ease;
+  transition:
+    transform 160ms ease,
+    opacity 160ms ease;
   opacity: 0;
   transform: translateY(8px) scale(0.96);
+  background-color: transparent;
+  outline: none;
+  border: none;
 }
 
 .visible {
   opacity: 1;
   transform: translateY(0) scale(1);
-}
-
-.focusVisible:focus {
-  outline: 3px solid rgba(255,255,255,0.12);
-  outline-offset: 3px;
 }
 
 @media (max-width: 640px) {
