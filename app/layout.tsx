@@ -29,6 +29,9 @@ export const metadata: Metadata = {
   generator: 'Next.js',
   publisher: 'Vercel',
   robots: 'index, follow',
+  other: {
+    'google-site-verification': '3tFw46pr7oE7G89QW1lziwTvZ6FU95x3jMrZjJoCiDg',
+  },
 };
 
 export default function RootLayout({
