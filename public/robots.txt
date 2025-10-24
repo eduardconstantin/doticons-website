@@ -1,4 +1,0 @@
-# https://www.robotstxt.org/robotstxt.html
-User-Agent: *
-Allow: /
-Sitemap: https://doticons-website.vercel.app/sitemap.xml
