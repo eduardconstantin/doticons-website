@@ -22,6 +22,7 @@ const Navbar: FC = async () => {
               height={50}
               src="/DotIcons.svg"
               alt="Doticons Logo"
+              loading="eager"
             />
           </Link>
           <Link href={'https://www.npmjs.com/package/doticons'} target="_blank">

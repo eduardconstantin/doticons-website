@@ -50,7 +50,7 @@ const ReturnToTop: FC = () => {
       onKeyDown={handleKey}
       tabIndex={0}
     >
-      <ArrowUpDoticon fill="#fff" />
+      <ArrowUpDoticon fill="#fff" width="100%" height="100%" />
     </button>
   );
 };
