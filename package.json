@@ -13,7 +13,7 @@
   "dependencies": {
     "@next/third-parties": "^16.1.6",
     "doticons": "^0.9.0",
-    "next": "^16.1.7",
+    "next": "^16.2.3",
     "react": "^18",
     "react-dom": "^18",
     "react-github-btn": "^1.4.0",
