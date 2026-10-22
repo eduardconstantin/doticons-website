@@ -1,6 +1,6 @@
 export const getPackageVersion = async () => {
   const response = await fetch(`https://registry.npmjs.org/doticons`, {
-    cache: 'no-cache',
+    next: { revalidate: 3600 },
   });
 
   if (!response.ok) {
